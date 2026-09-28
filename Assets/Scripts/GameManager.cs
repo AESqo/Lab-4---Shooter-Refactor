@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject meteorPrefab;
+    public GameObject meteorOrbitPrefab;
     public GameObject bigMeteorPrefab;
     public bool gameOver = false;
 
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         InvokeRepeating("SpawnMeteor", 1f, 2f);
+        InvokeRepeating("SpawnOrbitMeteor", 2f, 3f);
     }
 
     // Update is called once per frame
@@ -51,6 +53,11 @@ public class GameManager : MonoBehaviour
     void SpawnMeteor()
     {
         Instantiate(meteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+    }
+
+    void SpawnOrbitMeteor()
+    {
+        Instantiate(meteorOrbitPrefab, new Vector3(Random.Range(-4, 4), 7.5f, 0), Quaternion.identity);
     }
 
     void BigMeteor()
